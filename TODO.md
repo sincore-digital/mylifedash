@@ -14,9 +14,15 @@
 - [ ] metodos de consulta de api ou requisições (curl)
 - [ ] metodos para fazer cralwer, onde vai baixar o html e executar um seletor para recuperar as informações
 
+# interface
+- [ ] prover metodos de criação de graficos para padronizar o visual
+- [ ] prover helpers para exibição de dados como data e numeros (internacionalização)
+- [ ] prover helpers para tradução
+
 # widgets
 
 - [ ] o widget deve registrar rotas, que o core deverá acrescentar ao sistema
 - [ ] o widget deverá registrar um metodo de atualização, que será executado de tempo em tempo, onde um ajax fará essa requisição
 - [ ] o widget deve poder acessar componentes do core e dados de outros widgets
 - [ ] o widget deve prover o retorno de um tpl, que será incluso no dash do core
+- [ ] o widger poderá registrar arquivos js e css para serem inclusos
