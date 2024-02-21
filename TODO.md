@@ -10,6 +10,7 @@
 - [ ] acesso ao banco de dados
 - [ ] acesso à registro e recuperação de widgets
 - [ ] metodos de tradução
+- [ ] providenciar uma forma descente de armazenar dados em cache (para nao ficar buscando de APIs toda hora)
 - [ ] metodos de conversão de numeros e datas (internacionalização)
 - [ ] metodos de consulta de api ou requisições (curl)
 - [ ] metodos para fazer cralwer, onde vai baixar o html e executar um seletor para recuperar as informações
