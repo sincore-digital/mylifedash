@@ -5,6 +5,7 @@
 - [ ] o core deve fazer a conexão com o banco e prover essa conexão de forma simples e transparente para os widgets
 - [ ] o core deve ter um tpl principal, que fará inclusão dos tpls dos widgets
 - [ ] é possivel ler o composer de outros diretórios? ou usar o proprio composer para fazer download de novos widgets? pensar numa forma de facilitar a instalação dos widgets e suas dependencias (usar um repositório de widgets? onde colcoamos o repositório final do widget de quem criou? )
+- [ ] possibilitar que o widget crie novas paginas, mas use o tpl padrão do core
 
 # componentes do core
 - [ ] acesso ao banco de dados
