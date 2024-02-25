@@ -2,6 +2,11 @@
 
 require __DIR__ . "/../vendor/autoload.php";
 
+defined("APPLICATION_PATH") || define("APPLICATION_PATH", realpath(__DIR__) . "/..");
+defined("WIDGETS_PATH") || define("WIDGETS_PATH", APPLICATION_PATH . "/widgets");
+
+ini_set("display_errors", "on");
+
 // create container
 $container = new \DI\Container();
 \Slim\Factory\AppFactory::setContainer($container);
@@ -9,19 +14,16 @@ $container = new \DI\Container();
 // app
 $app = \Slim\Factory\AppFactory::create();
 
-// set view container
-$container->set("view", function($container) {
+// read config
+$config = require(__DIR__ . "/../config.php");
+\Application\Factory::set("config", $config);
 
-	// Create smarty view
-	$view = new \Slim\Views\Smarty([
-		'template_dir' => [__DIR__ . "/../src/templates"],
-		'compile_dir' =>  __DIR__ . "/../tmp/templates_c",
-		'caching' => FALSE,
-		'cache_lifetime' => 4600,
-		'force_compile' => TRUE,  // false on production
-		'compile_check' => TRUE,  // false on production
-		'debugging' => FALSE,
-	]);
+// set view container
+$container->set("view", function($container) use ($config) {
+
+	$view = new \Slim\Views\Smarty($config['smarty']);
+
+	\Application\Factory::set("view", $view);
 
 	return $view;
 });
@@ -35,8 +37,6 @@ $app->get('/', function (\Psr\Http\Message\ServerRequestInterface $request, \Psr
 	$bootstrap = new \Application\Bootstrap($this, $request, $response);
 
 	return $bootstrap->process();
-
-	
 
 });
 

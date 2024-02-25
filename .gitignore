@@ -1,4 +1,5 @@
 vendor/*
+tmp/templates_cache/*
 tmp/templates_c/*
 
-!*/.gitkeep
+!**/.gitkeep

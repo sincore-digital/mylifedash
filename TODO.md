@@ -1,11 +1,12 @@
 # core
-- [ ] criar um core com rotas e smarty. talvez usando slim?
+- [x] criar um core com rotas e smarty. talvez usando slim?
 - [ ] prover um factory, onde os componente possam ser registrados e recuperados por outras partes ou por widgets
 - [ ] o core deve prover uma forma de um widget recuperar funções publicas (api?) de outro widget
 - [ ] o core deve fazer a conexão com o banco e prover essa conexão de forma simples e transparente para os widgets
 - [ ] o core deve ter um tpl principal, que fará inclusão dos tpls dos widgets
 - [ ] é possivel ler o composer de outros diretórios? ou usar o proprio composer para fazer download de novos widgets? pensar numa forma de facilitar a instalação dos widgets e suas dependencias (usar um repositório de widgets? onde colcoamos o repositório final do widget de quem criou? )
 - [ ] possibilitar que o widget crie novas paginas, mas use o tpl padrão do core
+
 
 # componentes do core
 - [ ] acesso ao banco de dados
@@ -15,6 +16,8 @@
 - [ ] metodos de conversão de numeros e datas (internacionalização)
 - [ ] metodos de consulta de api ou requisições (curl)
 - [ ] metodos para fazer cralwer, onde vai baixar o html e executar um seletor para recuperar as informações
+- [ ] cron, e os widgets devem poder registrar uma função nesse cron
+- [ ] atualizações, onde rodará as funções update dos widgets e atualizará a interface
 
 # interface
 - [ ] prover metodos de criação de graficos para padronizar o visual
