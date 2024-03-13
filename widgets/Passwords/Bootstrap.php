@@ -1,6 +1,6 @@
 <?php
 
-namespace Widgets\CustomAPI;
+namespace Widgets\Passwords;
 
 class Bootstrap extends \Application\Widget
 {

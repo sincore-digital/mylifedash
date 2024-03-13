@@ -28,6 +28,13 @@ return [
 			'value' => "QUALQUER",
 		],
 
+		// widget 4
+		[
+			'provider' => "Passwords",
+			'cols' => 2,
+			'value' => "QUALQUER",
+		],
+
 	],
 
 	// smarty

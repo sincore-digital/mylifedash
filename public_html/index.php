@@ -32,7 +32,7 @@ $container->set("view", function($container) use ($config) {
 $app->addErrorMiddleware(true, true, true);
 
 // add routes
-$app->get('/', function (\Psr\Http\Message\ServerRequestInterface $request, \Psr\Http\Message\ResponseInterface $response) {
+$app->get("/", function (\Psr\Http\Message\ServerRequestInterface $request, \Psr\Http\Message\ResponseInterface $response) {
 	
 	$bootstrap = new \Application\Bootstrap($this, $request, $response);
 

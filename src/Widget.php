@@ -4,13 +4,15 @@ namespace Application;
 
 class Widget 
 {
-	protected $files = [];
+	protected $template;
 	
 	protected $pluginName = "";
 
 	protected $config;
 
 	protected $vars = [];
+
+	protected $html = "";
 
 	/**
 	 * construct
@@ -22,7 +24,20 @@ class Widget
 		$parts = explode("\\", get_class($this));
 		$this->pluginName = $parts[1];
 
+		$this->app = \Application\Factory::get("app");
+		$this->request = \Application\Factory::get("request");
+		$this->response = \Application\Factory::get("response");
+
+
 		$this->configure();
+	}
+
+	/**
+	 * get config
+	 */
+	public function getConfig()
+	{
+		return $this->config;
 	}
 
 	/**
@@ -34,16 +49,19 @@ class Widget
 	}
 
 	/**
+	 * get absolute path to the widget
+	 */
+	public function getPath()
+	{
+		return WIDGETS_PATH . "/" . $this->pluginName;
+	}
+
+	/**
 	 * get template file
 	 */
 	public function getTemplate()
 	{
-		if(isset($this->files['template'])) {
-			return WIDGETS_PATH . "/" . $this->pluginName . "/" . $this->files['template'];
-		}
-		else {
-			return "";
-		}
+		return $this->template;
 	}
 
 	/**
@@ -51,7 +69,7 @@ class Widget
 	 */
 	protected function setTemplate($filepath)
 	{
-		$this->files['template'] = $filepath;
+		$this->template = $filepath;
 	}
 
 	/**
@@ -68,5 +86,21 @@ class Widget
 	public function getVars()
 	{
 		return $this->vars;
+	}
+
+	/**
+	 * process the widget, processing data and parsing template
+	 */
+	public function process()
+	{
+		$this->html = $this->app->get("view")->getSmarty()->fetch($this->getTemplate(), $this->getVars());
+	}
+
+	/**
+	 * get html of widget
+	 */
+	public function getHtml()
+	{
+		return $this->html;
 	}
 }

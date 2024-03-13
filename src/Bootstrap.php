@@ -39,24 +39,20 @@ class Bootstrap
 		$config = \Application\Factory::get("config");
 		$widgets = $config['widgets'];
 
-		// template vars
-		$vars = [];
-
 		// loop widgets
 		$oWidgets = [];
 		foreach($widgets as $widget) {
+
 			$oWidget = new ("\\Widgets\\" . $widget['provider'] . "\\Bootstrap")($widget);
+			$oWidget->process();
 			
 			$oWidgets[] = $oWidget;
 
-			$vars = $oWidget->getVars();
 		}
 
-		// add widgets to templates
-		$vars['oWidgets'] = $oWidgets;
-
 		// compile the template
-		return $this->app->get('view')->render($this->response, __DIR__ . "/../src/templates/index.tpl", $vars);
-
+		return $this->app->get('view')->render($this->response, __DIR__ . "/../src/templates/index.tpl", [
+			'oWidgets' => $oWidgets
+		]);
 	}
 }

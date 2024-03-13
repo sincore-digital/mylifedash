@@ -9,9 +9,10 @@ class Bootstrap extends \Application\Widget
 	 */
 	public function configure()
 	{
-		// // add tpl file to render
-		$this->setTemplate("simple.tpl");
+		// add tpl file to render
+		$this->setTemplate($this->getPath() . "/simple.tpl");
 
-		$this->assign("value", $this->config['value']);
+		// assign config value
+		$this->assign("value", $this->getConfig()['value']);
 	}
 }
