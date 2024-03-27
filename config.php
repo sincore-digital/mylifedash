@@ -31,7 +31,7 @@ return [
 		// widget 4
 		[
 			'provider' => "Passwords",
-			'cols' => 2,
+			'cols' => 4,
 			'value' => "QUALQUER",
 		],
 
