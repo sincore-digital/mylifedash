@@ -41,6 +41,7 @@ class Bootstrap
 
 		// loop widgets
 		$oWidgets = [];
+		$javascripts = [];
 		foreach($widgets as $widget) {
 
 			$oWidget = new ("\\Widgets\\" . $widget['provider'] . "\\Bootstrap")($widget);
@@ -48,11 +49,22 @@ class Bootstrap
 			
 			$oWidgets[] = $oWidget;
 
+			$oJavascripts = array_merge($javascripts, $oWidget->getJavascripts());
+
 		}
+
+
+		// compile all javascripts
+		$outJavascript = "";
+		foreach($oJavascripts as $javascript) {
+			$outJavascript .= "\n;\n" . file_get_contents($javascript);
+		}
+		file_put_contents(APPLICATION_PATH . "/public_html/assets/compiled.js", $outJavascript);
+
 
 		// compile the template
 		return $this->app->get('view')->render($this->response, __DIR__ . "/../src/templates/index.tpl", [
-			'oWidgets' => $oWidgets
+			'oWidgets' => $oWidgets,
 		]);
 	}
 }

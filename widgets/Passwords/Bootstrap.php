@@ -12,6 +12,9 @@ class Bootstrap extends \Application\Widget
 	{
 		// add tpl file to render
 		$this->setTemplate($this->getPath() . "/templates/widget.tpl");
+
+		// add javascript
+		$this->addJavascript($this->getPath() . "/assets/javascript.js");
 	}
 
 	/**

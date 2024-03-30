@@ -14,6 +14,12 @@ class Widget
 
 	protected $html = "";
 
+	protected $javascripts = [];
+
+	private $app;
+	private $request;
+	private $response;
+
 	/**
 	 * construct
 	 */
@@ -32,12 +38,27 @@ class Widget
 		$this->configure();
 	}
 
+	public function configure() {}
+
 	/**
 	 * get config
 	 */
 	public function getConfig()
 	{
 		return $this->config;
+	}
+
+	/**
+	 * add javascript to dashboard
+	 */
+	public function addJavascript($file)
+	{
+		$this->javascripts[] = $file;
+	}
+
+	public function getJavascripts()
+	{
+		return $this->javascripts;
 	}
 
 	/**
