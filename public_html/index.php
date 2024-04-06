@@ -3,7 +3,7 @@
 require __DIR__ . "/../vendor/autoload.php";
 
 defined("APPLICATION_PATH") || define("APPLICATION_PATH", realpath(__DIR__) . "/..");
-defined("WIDGETS_PATH") || define("WIDGETS_PATH", APPLICATION_PATH . "/widgets");
+defined("WIDGETS_PATH") || define("WIDGETS_PATH", APPLICATION_PATH . "/public_html/widgets");
 
 ini_set("display_errors", "on");
 

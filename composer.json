@@ -9,7 +9,7 @@
     "autoload": {
         "psr-4": {
             "Application\\": "src/",
-            "Widgets\\": "widgets/"
+            "Widgets\\": "public_html/widgets/"
         }
     }
 }
