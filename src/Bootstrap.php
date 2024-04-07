@@ -36,8 +36,8 @@ class Bootstrap
 	 */
 	public function process()
 	{
-		$config = \Application\Factory::get("config");
-		$widgets = $config['widgets'];
+		$oConfig = \Application\Factory::get("config");
+		$widgets = $oConfig['widgets'];
 
 		// loop widgets
 		$oWidgets = [];
@@ -53,18 +53,10 @@ class Bootstrap
 
 		}
 
-
-		// compile all javascripts
-		$outJavascript = "";
-		foreach($oJavascripts as $javascript) {
-			$outJavascript .= "\n;\n" . file_get_contents($javascript);
-		}
-		file_put_contents(APPLICATION_PATH . "/public_html/assets/compiled.js", $outJavascript);
-
-
 		// compile the template
 		return $this->app->get('view')->render($this->response, __DIR__ . "/../src/templates/index.tpl", [
 			'oWidgets' => $oWidgets,
+			'oConfig' => $oConfig,
 		]);
 	}
 }

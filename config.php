@@ -36,6 +36,12 @@ return [
 		],
 
 	],
+	
+	// temas
+	'themes' => [
+		'title' => "My Life Dashboard",
+		'name' => "default",
+	],
 
 	// smarty
 	'smarty' => [
