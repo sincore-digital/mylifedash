@@ -1,9 +1,9 @@
 
 <div class="card js-passwords">
-	<div class="card-header px-3 py-1 small">
+	<div class="card-header">
 		Gerador de Senhas
 	</div>
-	<div class="card-body p-3">
+	<div class="card-body">
 		<div class="row">
 			<div class="col-12">
 				<div class="card-block">

@@ -15,6 +15,7 @@ class Widget
 	protected $html = "";
 
 	protected $javascripts = [];
+	protected $stylesheets = [];
 
 	private $app;
 	private $request;
@@ -49,11 +50,24 @@ class Widget
 	}
 
 	/**
+	 * add stylesheets to dashboard
+	 */
+	public function addStylesheets($file)
+	{
+		$this->stylesheets[] = "widgets/" . $this->pluginName . $file;
+	}
+
+	public function getStylesheets()
+	{
+		return $this->stylesheets;
+	}
+
+	/**
 	 * add javascript to dashboard
 	 */
 	public function addJavascript($file)
 	{
-		$this->javascripts[] = $file;
+		$this->javascripts[] = "widgets/" . $this->pluginName . $file;
 	}
 
 	public function getJavascripts()

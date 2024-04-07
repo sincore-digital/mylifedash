@@ -48,9 +48,6 @@ class Bootstrap
 			$oWidget->process();
 			
 			$oWidgets[] = $oWidget;
-
-			$oJavascripts = array_merge($javascripts, $oWidget->getJavascripts());
-
 		}
 
 		// compile the template

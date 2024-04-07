@@ -19,9 +19,13 @@
 		<link href="/themes/{$oConfig['themes']['name']}/bootstrap.min.css" rel="stylesheet" />
 		<link href="/themes/{$oConfig['themes']['name']}/global.css" rel="stylesheet" />
 
-		{* {foreach from=$files['css'] item=css}
-			<link href="{$css}" rel="stylesheet">
-		{/foreach} *}
+		{* stylesheets *}
+		{foreach from=$oWidgets item=widget}
+			{foreach from=$widget->getStylesheets() item=file}
+				<script src="{$file}"></script>
+			{/foreach}
+		{/foreach}
+		
 	</head>
 	<body data-bs-theme="dark">
 		
@@ -37,16 +41,15 @@
 
 		</div>
 
+		<script src="/themes/default/jquery-3.7.1.min.js.js"></script>
 		<script src="/themes/{$oConfig['themes']['name']}/bootstrap.bundle.min.js"></script>
 		
-		<!-- MDB -->
-		{* <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> *}
-		{* <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.umd.min.js"></script> *}
-		
-
-		{* {foreach from=$files['js'] item=js}
-			<script src="{$js}"></script>
-		{/foreach} *}
+		{* javascripts *}
+		{foreach from=$oWidgets item=widget}
+			{foreach from=$widget->getJavascripts() item=file}
+				<script src="{$file}"></script>
+			{/foreach}
+		{/foreach}
 	</body>
 </html>
 	

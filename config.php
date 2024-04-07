@@ -7,11 +7,8 @@ return [
 
 		// widget 1
 		[
-			'provider' => "CustomAPI",
-			'cols' => 6,
-			'config' => [
-				'url' => "",
-			],
+			'provider' => "Passwords",
+			'cols' => 4,
 		],
 
 		// widget 2
@@ -24,17 +21,18 @@ return [
 		// widget 3
 		[
 			'provider' => "Simple",
-			'cols' => 2,
+			'cols' => 4,
 			'value' => "QUALQUER",
 		],
 
 		// widget 4
 		[
-			'provider' => "Passwords",
-			'cols' => 4,
-			'value' => "QUALQUER",
+			'provider' => "CustomAPI",
+			'cols' => 6,
+			'config' => [
+				'url' => "",
+			],
 		],
-
 	],
 	
 	// temas
