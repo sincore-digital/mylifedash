@@ -21,3 +21,10 @@ Life Dashboard é um projeto que visa ser como um CMS, porem para ferramentas qu
 ## widgets
 
 - estrutura
+
+# Ideias de widgets
+
+- [ ] Gerador de senha
+- [ ] Adição de links de favoritos
+- [ ] ToDo simples
+- [ ] Finanças
