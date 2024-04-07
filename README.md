@@ -12,9 +12,11 @@ Life Dashboard é um projeto que visa ser como um CMS, porem para ferramentas qu
 ## estrutura interna html
 
 - bootstrap
-- todas as configurações globais começam com a variavel $oConfig, $oWidgets
-- $oWidgets tem o vetor de objetos dos widgets
-- $oConfig tem o vetor de configuração
+- todas as configurações globais começam com a variavel `$oConfig`, `$oWidgets`
+- `$oWidgets` tem o vetor de objetos dos widgets
+- `$oConfig` tem o vetor de configuração
+- tentar não usar id em elemento, ja que pode ser colocado 2x
+- tentar usar um padrão de classes unicas, como `widget`-`elemento`-`evento`, por exemplo `passwords-copy-click`
 
 ## widgets
 

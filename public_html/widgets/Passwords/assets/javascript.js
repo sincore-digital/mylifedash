@@ -1,85 +1,66 @@
 /**
- * regenerate password
+ * gerar a senha
  */
 $('.js-passwords').delegate('.js-passwords-refresh', 'click', function(e) {
 	e.preventDefault();
 
-	var size = $(this).closest('.js-passwords').find('input[type="range"]').val(),
-		password = gerarSenhaSegura(size);
+	var element = $(this).closest('.js-passwords'),
+		size = element.find('input[type="range"]').val(),
+		password = gerarSenhaSegura(size, element.find('.passwords-checkbox-symbols').is(':checked'));
 
-	$(this).closest('.js-passwords').find('.js-password-text').html(password);
+	element.find('.js-password-text').html(password);
 });
 
 $('.js-passwords-refresh').click();
 
 /**
- * copy password
+ * copiar a senha
  */
 $('.js-passwords').delegate('.js-passwords-copy', 'click', function(e) {
 	e.preventDefault();
 
-	var textToCopy = $(this).closest('.js-passwords').find('.js-password-text').html();
+	var element = $(this).closest('.js-passwords').find('.js-password-text'),
+		textToCopy = element.html();
 
+	// sucesso
 	navigator.clipboard.writeText(textToCopy).then(() => {
-		// Ação após copiar o texto com sucesso
-		console.log("Texto copiado para a área de transferência!");
-	}, () => {
-		// Ação caso haja falha ao copiar o texto
-		console.log("Falha ao copiar o texto para a área de transferência!");
+		var html = `<span class="ms-2 badge text-bg-success">copiado!</span>`;
+		element.append(html);
+		setTimeout(function() {
+			element.find('.badge').fadeOut(function() {
+				$(this).remove();
+			});
+		}, 3000);
+
+	}, 
+
+	// falha
+	() => {
+		var html = `<span class="ms-2 badge text-bg-error">erro!</span>`;
+		element.append(html);
+		setTimeout(function() {
+			element.find('.badge').fadeOut(function() {
+				$(this).remove();
+			});
+		}, 3000);
 	});
 });
 
 /**
- * 
+ * gera a senha
  */
-function gerarSenhaSegura(tamanho) {
-
-	const letrasMinusculas = "abcdefghijklmnopqrstuvwxyz";
-	const letrasMaiusculas = letrasMinusculas.toUpperCase();
-	const numeros = "0123456789";
-	const simbolos = "!@#";
-
-	const conjuntos = [letrasMinusculas, letrasMaiusculas, numeros, simbolos];
-
-	let senha = "";
-
-	senha += letrasMinusculas.charAt(Math.floor(Math.random() * letrasMinusculas.length));
-
-	for (let i = 1; i < tamanho; i++) {
-		const conjuntoAleatorio = conjuntos[Math.floor(Math.random() * conjuntos.length)];
-		senha += conjuntoAleatorio.charAt(Math.floor(Math.random() * conjuntoAleatorio.length));
+function gerarSenhaSegura(tamanho, useSimbolos) 
+{
+	var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJLMNOPQRSTUVWXYZ";
+	if(useSimbolos) {
+		chars += '!@#';
 	}
 
-	let hasMinuscula = false;
-	let hasMaiuscula = false;
-	let hasNumero = false;
-	let hasSimbolo = false;
-
-	for (let i = 0; i < senha.length; i++) {
-	if (letrasMinusculas.includes(senha[i])) {
-		hasMinuscula = true;
-	} else if (letrasMaiusculas.includes(senha[i])) {
-		hasMaiuscula = true;
-	} else if (numeros.includes(senha[i])) {
-		hasNumero = true;
-	} else if (simbolos.includes(senha[i])) {
-		hasSimbolo = true;
-	}
+	var senha = "";
+	for (var i = 0; i < tamanho; i++) {
+		var randomNumber = Math.floor(Math.random() * chars.length);
+		senha += chars.substring(randomNumber, randomNumber + 1);
 	}
 
-	if (!hasMinuscula) {
-		senha += letrasMinusculas.charAt(Math.floor(Math.random() * letrasMinusculas.length));
-	}
-	if (!hasMaiuscula) {
-		senha += letrasMaiusculas.charAt(Math.floor(Math.random() * letrasMaiusculas.length));
-	}
-	if (!hasNumero) {
-		senha += numeros.charAt(Math.floor(Math.random() * numeros.length));
-	}
-	if (!hasSimbolo) {
-		senha += simbolos.charAt(Math.floor(Math.random() * simbolos.length));
-	}
-
-	// Retorna a senha
 	return senha;
 }
